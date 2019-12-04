@@ -24,35 +24,53 @@ with open(csvpath, newline='') as csvfile:
     pAndL = []
     differences = []
     
-    for i in range(len(data)):
+    diffRange = (len(data))-1
+    #print(diffRange)
+
+    for i in range(diffRange):
             #print(data[i][1])
-            #older = data[i+1][1]
-            #recent = data[i][1]
-            #diff = (int(older)-int(recent))
-            #differences.append(diff)
+            older = data[i+1][1]
+            recent = data[i][1]
+            diff = (int(older)-int(recent))
+            differences.append(diff)
             pAndL.append(int(data[i][1]))
            
       #      if i ==1 and i<85:
      #              differences.append(pAndL[i+1]-pAndL[i])
-            
-    total = sum(pAndL)
+
+    lastMonth = (data[i+1][1])
+   # print (lastMonth)
+
+    total = (sum(pAndL) + int(lastMonth))
     print("Total:" + " " + str(total))
     #print (differences)
 
-    lastMonth = (data[i][1])
-    #print (lastMonth)
 
     firstMonth = (data[0][1])
     #print (firstMonth)
 
-    avgChange = ((int(lastMonth)-int(firstMonth))/i)
+    avgChange = ((int(lastMonth)-int(firstMonth))/(i+1))
     print("Avg Change:" + "" + str(avgChange))
 
+    greatestProfit = (max(differences))
+    #print(greatestProfit)
+    monthBefore = differences.index(max(differences))
+    #print(monthBefore)
+    bestMonth = print(data[int(monthBefore)+1][0])     
+    #+1 since the index starts at 0, rather than 1
+    #print(bestMonth)
+    print("Greatest Increase in Profits:" + float(bestMonth))
+    
+    #(str(greatestProfit)))
+
+
+
+    #print(min(differences))
+
+
+
+  
 
     #for row in csvreader:
            # print(row) testing to make sure I pulled the file correctly
          
- 
-
-    
-  
