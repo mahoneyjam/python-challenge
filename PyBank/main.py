@@ -73,12 +73,6 @@ with open(csvpath, newline='') as csvfile:
 
 
 
-    #print(min(differences))
-
-
-
-  
-
     #for row in csvreader:
            # print(row) testing to make sure I pulled the file correctly
          
