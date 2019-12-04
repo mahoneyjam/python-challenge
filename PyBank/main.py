@@ -35,8 +35,7 @@ with open(csvpath, newline='') as csvfile:
             differences.append(diff)
             pAndL.append(int(data[i][1]))
            
-      #      if i ==1 and i<85:
-     #              differences.append(pAndL[i+1]-pAndL[i])
+ 
 
     lastMonth = (data[i+1][1])
    # print (lastMonth)
