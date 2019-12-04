@@ -56,12 +56,20 @@ with open(csvpath, newline='') as csvfile:
     #print(greatestProfit)
     monthBefore = differences.index(max(differences))
     #print(monthBefore)
-    bestMonth = print(data[int(monthBefore)+1][0])     
+    bestMonth = (data[int(monthBefore)+1][0])     
     #+1 since the index starts at 0, rather than 1
     #print(bestMonth)
-    print("Greatest Increase in Profits:" + float(bestMonth))
+    print("Greatest Increase in Profits:" + (bestMonth) + " " + (str(greatestProfit)))
     
-    #(str(greatestProfit)))
+    
+    lowestProfit = (min(differences))
+    #print(lowestProfit)
+    monthLowBefore = differences.index(min(differences))
+    #print(monthLowBefore)
+    worstMonth = (data[int(monthLowBefore)+1][0])     
+    #+1 since the index starts at 0, rather than 1
+    #print(worstMonth)
+    print("Greatest Decrease in Profits:" + (worstMonth) + " " + (str(lowestProfit)))
 
 
 
