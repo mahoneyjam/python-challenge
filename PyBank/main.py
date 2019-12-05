@@ -5,6 +5,7 @@ import csv
 csvpath = os.path.join('.', 'Resources', 'budget_data.csv')
 
 
+
 #read with CSV file
 with open(csvpath, newline='') as csvfile:
    
@@ -34,8 +35,6 @@ with open(csvpath, newline='') as csvfile:
             diff = (int(older)-int(recent))
             differences.append(diff)
             pAndL.append(int(data[i][1]))
-           
- 
 
     lastMonth = (data[i+1][1])
    # print (lastMonth)
