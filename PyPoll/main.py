@@ -12,54 +12,55 @@ with open(csvpath, newline='') as csvfile:
    
     # split data by commas
     csvreader = csv.reader(csvfile, delimiter=',')
-     
 
     csv_header = next(csvreader)
     print(f"CSV Header: {csv_header}")
 
-
     # data = list(csvreader)
     # totalVotes = len(data)
-    # print("Total Votes:" + str(totalVotes))
-
-
-
-    #Candidate = data[row[2]]
     
     for row in csvreader:
-        # if row[2] not in Candidate:
-        # Candidate.append(int[row[2]]
-        
-       
         Candidate[row[2]] = Candidate.get(row[2], 0) + 1
 
-        # print(row[2])
-
-
-# dictionary[key] = dictionary.get(key, default_value)
-
-# candidate_votes =  dictionary.get(key, default_value)
-# If the key exists in the dictionary, it will return the key value.
-# But if it does not exist, it returns the default value ...
-# And if you wanted to add something to the key value ....
-# remember, to add a new key/value pair to a dictionary, you just type dictionary[key] = value.
-
-    # for i in range(len(data)):
-    #         #print(data[i][1])
-
-    #         Candidate(int(data[i][2]))
-
-    #     print(Candidate)
-           
+    
+# print("Total Votes:" + str(totalVotes))      
  
   # for row in csvreader:
   #      print(row) pull the file
 
-vote_key = list(Candidate.keys())
-vote_count = list(Candidate.values())
-print(vote_key)
-print(vote_count)
+voteKey = list(Candidate.keys())
+#print(voteKey)
+voteCount = list(Candidate.values())
+#print(voteCount)
 
-reverse_dict = dict(zip(vote_count, vote_key))
-print (reverse_dict)
+sum = 0
+for num in voteCount:
+    sum = sum +num
+#print(sum)
 
+print("Total Votes:" + str(sum))
+
+khanDecimal = ((voteCount[0])/(sum))
+# print "{0:.0%}".format(khanDecimal)
+khanPercent = khanDecimal*100
+# print(khanPercent)
+
+correyDecimal = ((voteCount[1])/(sum))
+correyPercent = correyDecimal*100
+liDecimal = ((voteCount[2])/(sum))
+liPercent = liDecimal*100
+otDecimal = ((voteCount[3])/(sum))
+otPercent = otDecimal*100
+#print(khanDecimal)
+
+
+print(voteKey[0], khanPercent, voteCount[0])
+print(voteKey[1], correyPercent, voteCount[1])
+print(voteKey[2], liPercent, voteCount[2])
+print(voteKey[3], otPercent, voteCount[3])
+
+
+
+maxValue = max(Candidate.values()) 
+maxKeys = [k for k, v in Candidate.items() if v == maxValue] 
+print("Winner:" + " " + str(maxKeys))
