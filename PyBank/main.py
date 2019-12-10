@@ -2,15 +2,12 @@ import os
 import csv
 
 
-csvpath = os.path.join('.', 'Resources', 'budget_data.csv')
+csvpath = os.path.join('.', 'Resources', 'budget_data.csv') 
 
 
-
-#read with CSV file
 with open(csvpath, newline='') as csvfile:
    
-    #split data by commas
-    csvreader = csv.reader(csvfile, delimiter=',')
+    csvreader = csv.reader(csvfile, delimiter=',') #split data with the comma
 
     print(csvreader)
 
@@ -20,16 +17,14 @@ with open(csvpath, newline='') as csvfile:
 
     data = list(csvreader)
     Total_Months = len(data)
-    print("Total Months:" + " " + str(Total_Months))
 
     pAndL = []
     differences = []
     
     diffRange = (len(data))-1
-    #print(diffRange)
+    
 
     for i in range(diffRange):
-            #print(data[i][1])
             older = data[i+1][1]
             recent = data[i][1]
             diff = (int(older)-int(recent))
@@ -37,40 +32,49 @@ with open(csvpath, newline='') as csvfile:
             pAndL.append(int(data[i][1]))
 
     lastMonth = (data[i+1][1])
-   # print (lastMonth)
-
     total = (sum(pAndL) + int(lastMonth))
-    print("Total:" + " " + str(total))
-    #print (differences)
-
-
+    
     firstMonth = (data[0][1])
-    #print (firstMonth)
-
-    avgChange = ((int(lastMonth)-int(firstMonth))/(i+1))
-    print("Avg Change:" + "" + str(avgChange))
+    
+    avgDiff = ((int(lastMonth)-int(firstMonth))/(i+1))
+    avgChange = str(round(avgDiff,2))
 
     greatestProfit = (max(differences))
-    #print(greatestProfit)
-    monthBefore = differences.index(max(differences))
-    #print(monthBefore)
-    bestMonth = (data[int(monthBefore)+1][0])     
-    #+1 since the index starts at 0, rather than 1
-    #print(bestMonth)
-    print("Greatest Increase in Profits:" + (bestMonth) + " " + (str(greatestProfit)))
     
+    monthBefore = differences.index(max(differences))
+    
+    bestMonth = (data[int(monthBefore)+1][0])     
     
     lowestProfit = (min(differences))
-    #print(lowestProfit)
+
     monthLowBefore = differences.index(min(differences))
-    #print(monthLowBefore)
+    
     worstMonth = (data[int(monthLowBefore)+1][0])     
-    #+1 since the index starts at 0, rather than 1
-    #print(worstMonth)
+    
     print("Greatest Decrease in Profits:" + (worstMonth) + " " + (str(lowestProfit)))
 
 
-
-    #for row in csvreader:
-           # print(row) testing to make sure I pulled the file correctly
-         
+text_file = open("PyBank_output_PBL.txt", "w") # create text file in same folder as main.py, assign variable to path
+print('Financial Analysis')
+text_file.write('Financial Analysis')
+print('-------------------------')
+text_file.write('-------------------------')
+print("Total Months:" + " " + str(Total_Months))
+text_file.write("Total Months:" + " " + str(Total_Months))
+print('-------------------------')
+text_file.write('-------------------------')
+print("Total:" + " " + "$" + str(total))
+text_file.write("Total:" + " " + "$" + str(total))
+print('-------------------------')
+text_file.write('-------------------------')
+print("Avg Change:" + "" + "$" + str(avgChange))
+text_file.write("Avg Change:" + "" + "$" + str(avgChange))
+print('-------------------------')
+text_file.write('-------------------------')
+print("Greatest Increase in Profits:" + (bestMonth) + " " + "$" + (str(greatestProfit)))
+text_file.write("Greatest Increase in Profits:" + (bestMonth) + " " + "$" + (str(greatestProfit)))
+print('-------------------------')
+text_file.write('-------------------------')
+print("Greatest Decrease in Profits:" + (worstMonth) + " " + "$" + (str(lowestProfit)))
+text_file.write("Greatest Decrease in Profits:" + (worstMonth) + " " + "$" + (str(lowestProfit)))
+text_file.close() # if you open it, close it        
