@@ -1,1 +1,1 @@
-text_file.write(khanPercent + "%")
+text_file.write(voteCount[0])
